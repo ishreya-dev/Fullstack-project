@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "backend",
+			"path": "backend"
+		},
+		{
+			"name": "app",
+			"path": "frontend/app"
+		},
+		{
+			"path": "caddy"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,59 @@
+from typing import List, Literal, Optional
+from pydantic import BaseModel, EmailStr
+
+from api.common.enums.gender import Gender
+from api.domain.entities.tenant import CustomDomain, Subdomain
+from api.domain.enum.feature import Feature as FeatureEnum
+
+
+class FeatureDto(BaseModel):
+    name: FeatureEnum
+    enabled: bool
+
+
+class TenantDto(BaseModel):
+    id: Optional[str]
+    name: str
+    subdomain: Optional[str] | None
+    is_active: bool
+    custom_domain: Optional[str] | None
+    custom_domain_status: Literal["active", "failed", "activation-progress"] = "failed"
+    features: List[FeatureDto] = []
+    subscription_id: Optional[str] | None
+
+
+class CreateTenantDto(BaseModel):
+    name: str
+    subdomain: Subdomain
+    admin_email: EmailStr
+    admin_password: str
+    first_name: str
+    last_name: str
+    gender: Gender
+
+
+class TenantListDto(BaseModel):
+    tenants: List[TenantDto]
+    skip: int
+    limit: int
+    total: int
+    has_previous: bool
+    has_next: bool
+
+
+class CreateTenantResponseDto(BaseModel):
+    id: str
+
+
+class SubdomainAvailabilityDto(BaseModel):
+    is_available: bool
+
+
+class UpdateTenantDto(BaseModel):
+    is_active: Optional[bool] | None = None
+    custom_domain: Optional[CustomDomain] | None = None
+    subscription_id: Optional[str] | None = None
+
+
+class UpdateTenantResponseDto(BaseModel):
+    message: str

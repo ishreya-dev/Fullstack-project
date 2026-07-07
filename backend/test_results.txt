@@ -1,0 +1,19 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.14, pytest-9.1.0, pluggy-1.6.0
+rootdir: C:\Users\shrey\OneDrive\Desktop\Projects\Fullstack_App\backend
+configfile: pytest.ini
+plugins: anyio-4.10.0, Faker-40.21.0, langsmith-0.8.18, asyncio-1.4.0
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 23 items
+
+tests\interfaces\test_role_endpoint.py ........                          [ 34%]
+tests\interfaces\test_tenant_endpoint.py ........                        [ 69%]
+tests\interfaces\test_user_endpoint.py .......                           [100%]
+
+============================== warnings summary ===============================
+api\common\dtos\health_dto.py:5
+  C:\Users\shrey\OneDrive\Desktop\Projects\Fullstack_App\backend\api\common\dtos\health_dto.py:5: PydanticDeprecatedSince20: Using extra keyword arguments on `Field` is deprecated and will be removed. Use `json_schema_extra` instead. (Extra keys: 'example'). Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    status: str = Field(..., example="Ok")
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+======================== 23 passed, 1 warning in 8.10s ========================
