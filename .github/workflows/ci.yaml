@@ -39,6 +39,28 @@ jobs:
         run: |
           uv run ruff check .
 
+      - name: Create .env for CI
+        working-directory: backend
+        run: |
+          cat > .env <<EOF
+          jwt_secret=test-secret
+          refresh_token_secret=test-refresh-secret
+          smtp_user=test@example.com
+          smtp_password=test-password
+          smtp_host=localhost
+          smtp_port=1025
+          smtp_mail_from=test@example.com
+          coolify_api_url=http://localhost
+          coolify_api_key=test-key
+          coolify_application_id=test-app
+          aws_access_key_id=test
+          aws_secret_access_key=test
+          stripe_api_key=test
+          stripe_publishable_key=test
+          stripe_secret_key=test
+          stripe_webhook_secret=test
+          EOF
+
       - name: Run Tests
         working-directory: backend
         run: |
