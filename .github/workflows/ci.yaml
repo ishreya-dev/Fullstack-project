@@ -10,11 +10,26 @@ on:
     branches:
       - main
       - master
-
 jobs:
   test:
-
     runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27012:27017
+
+        options: >-
+          --health-cmd "mongosh --eval 'db.adminCommand(\"ping\")' --quiet"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:latest
+        ports:
+          - 6372:6379
 
     steps:
 
@@ -59,7 +74,52 @@ jobs:
           stripe_publishable_key=test
           stripe_secret_key=test
           stripe_webhook_secret=test
+          redis_uri=redis://localhost:6372/0
           EOF
+
+      - name: Wait for MongoDB to be ready
+        run: |
+          python3 -c "
+          import socket
+          import time
+          for i in range(30):
+              try:
+                  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                  sock.settimeout(1)
+                  result = sock.connect_ex(('localhost', 27012))
+                  sock.close()
+                  if result == 0:
+                      print('MongoDB is ready on port 27012')
+                      exit(0)
+              except Exception as e:
+                  pass
+              print(f'Waiting for MongoDB... ({i+1}/30)')
+              time.sleep(1)
+          print('MongoDB failed to start within 30 seconds')
+          exit(1)
+          "
+
+      - name: Wait for Redis to be ready
+        run: |
+          python3 -c "
+          import socket
+          import time
+          for i in range(30):
+              try:
+                  sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                  sock.settimeout(1)
+                  result = sock.connect_ex(('localhost', 6372))
+                  sock.close()
+                  if result == 0:
+                      print('Redis is ready on port 6372')
+                      exit(0)
+              except Exception as e:
+                  pass
+              print(f'Waiting for Redis... ({i+1}/30)')
+              time.sleep(1)
+          print('Redis failed to start within 30 seconds')
+          exit(1)
+          "
 
       - name: Run Tests
         working-directory: backend
