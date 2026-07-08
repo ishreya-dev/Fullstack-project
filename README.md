@@ -14,7 +14,7 @@
 ![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-billing-635BFF?logo=stripe&logoColor=white)
 ![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)
-![CI](https://img.shields.io/github/actions/workflow/status/ishreya-dev/Fullstack-project/ci.yml?branch=main&label=CI)
+![CI](https://img.shields.io/github/actions/workflow/status/ishreya-dev/Fullstack-project/ci.yaml?branch=main&label=CI)
 ![Ruff](https://img.shields.io/badge/Lint-Ruff-46A3FF?logo=ruff&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
