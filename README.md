@@ -9,10 +9,13 @@
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 ![Redis](https://img.shields.io/badge/Redis-cache%20%2B%20broker-DC382D?logo=redis&logoColor=white)
 ![Celery](https://img.shields.io/badge/Celery-async%20tasks-37814A?logo=celery&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?logo=githubactions&logoColor=white)
+![Architecture](https://img.shields.io/badge/Architecture-Clean-success)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)
 ![Stripe](https://img.shields.io/badge/Stripe-billing-635BFF?logo=stripe&logoColor=white)
-![Tests](https://img.shields.io/badge/tests-23%20passing-brightgreen)
-![CI](https://img.shields.io/github/actions/workflow/status/sajanv88/full_stack_fastapi_react_template/ci.yml?label=CI)
-![Lint](https://img.shields.io/badge/lint-ruff-46a3ff?logo=ruff&logoColor=white)
+![Tests](https://img.shields.io/badge/Tests-Passing-brightgreen)
+![CI](https://img.shields.io/github/actions/workflow/status/ishreya-dev/Fullstack-project/ci.yml?branch=main&label=CI)
+![Ruff](https://img.shields.io/badge/Lint-Ruff-46A3FF?logo=ruff&logoColor=white)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 A production-oriented, multi-tenant SaaS starter built on **Clean Architecture** — FastAPI + MongoDB on the backend, React + TypeScript on the frontend, with tenant isolation, RBAC, Stripe billing, and async workflows baked in from day one.
